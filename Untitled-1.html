@@ -7,31 +7,27 @@
 
     <style>
       :root {
-        --primary: #38bdf8;
-        --secondary: #0ea5e9;
-        --bg: #020617;
-        --card: #020617;
-        --border: #1e293b;
-        --text: #e5e7eb;
-        --muted: #94a3b8;
+        --primary: #facc15;
+        --secondary: #eab308;
+        --bg: #3e2723;
+        --card: #4e342e;
+        --border: #6d4c41;
+        --text: #ffffff;
+        --muted: #f5e6d3;
       }
 
       * {
         box-sizing: border-box;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
-
       body {
         margin: 0;
         font-family: "Segoe UI", system-ui, sans-serif;
-        background: radial-gradient(circle at top, #020617, #000);
+        background: linear-gradient(135deg, #3e2723, #5d4037);
         color: var(--text);
       }
 
-      /* ---------- HERO ---------- */
+      /* HERO */
       .hero {
         min-height: 100vh;
         display: flex;
@@ -45,7 +41,7 @@
       .hero h1 {
         font-size: 3.5rem;
         color: var(--primary);
-        text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+        text-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
       }
 
       .hero p {
@@ -65,7 +61,6 @@
         font-weight: bold;
       }
 
-      /* ---------- SECTIONS ---------- */
       section {
         padding: 80px 20px;
         max-width: 1100px;
@@ -78,7 +73,7 @@
         margin-bottom: 50px;
       }
 
-      /* ---------- FEATURES ---------- */
+      /* FEATURES */
       .features {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -86,21 +81,25 @@
       }
 
       .feature {
-        background: rgba(2, 6, 23, 0.7);
+        background: var(--card);
         border: 1px solid var(--border);
         padding: 30px;
         border-radius: 15px;
-        transition:
-          transform 0.3s,
-          box-shadow 0.3s;
       }
 
-      .feature:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+      /* LOGO */
+      .logo-container {
+        text-align: center;
       }
 
-      /* ---------- INVESTMENT CARDS ---------- */
+      .logo-container img {
+        max-width: 220px;
+        border-radius: 20px;
+        padding: 15px;
+        background: white;
+      }
+
+      /* INVEST */
       .packages {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -108,35 +107,56 @@
       }
 
       .package {
-        background: linear-gradient(180deg, #020617, #020617);
+        background: var(--card);
         border: 1px solid var(--border);
         padding: 35px;
         border-radius: 20px;
-        position: relative;
         cursor: pointer;
-        transition:
-          transform 0.3s,
-          box-shadow 0.3s;
+        transition: 0.3s;
       }
 
       .package:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
-      }
-
-      .package.active {
-        outline: 2px solid var(--primary);
+        box-shadow: 0 0 35px rgba(250, 204, 21, 0.35);
       }
 
       .package h3 {
         color: var(--primary);
       }
 
-      .package ul {
-        padding-left: 20px;
+      /* PREVIEW GALLERY (SVE U JEDNOM REDU) */
+      .preview-gallery {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
       }
 
-      /* ---------- MODAL ---------- */
+      .preview-gallery img {
+        width: 300px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        padding: 8px;
+        background: white;
+      }
+
+      .preview-upload {
+        text-align: center;
+        margin: 40px 0;
+      }
+
+      .preview-upload button {
+        padding: 14px 30px;
+        border-radius: 30px;
+        border: none;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      /* MODAL */
       .modal {
         position: fixed;
         inset: 0;
@@ -147,24 +167,13 @@
       }
 
       .modal-content {
-        background: #020617;
+        background: var(--card);
         border: 1px solid var(--border);
         padding: 40px;
         border-radius: 15px;
-        max-width: 400px;
         text-align: center;
       }
 
-      .modal button {
-        margin-top: 20px;
-        padding: 12px 25px;
-        border-radius: 25px;
-        border: none;
-        background: var(--primary);
-        font-weight: bold;
-      }
-
-      /* ---------- FOOTER ---------- */
       footer {
         text-align: center;
         padding: 30px;
@@ -178,23 +187,28 @@
     <!-- HERO -->
     <div class="hero">
       <h1>RetroVPG</h1>
-      <p>
-        Digitalna arhiva retro videozapisa i fotografija – čuvamo povijest,
-        gradimo budućnost. Povezujemo sve!
-      </p>
+      <p>Digitalna arhiva retro sadržaja i investicijska platforma.</p>
       <button onclick="document.getElementById('invest').scrollIntoView()">
         Investiraj
       </button>
     </div>
 
+    <!-- LOGO -->
+    <section>
+      <h2>Logo aplikacije</h2>
+      <div class="logo-container">
+        <img src="logo.png" alt="RetroVPG Logo" />
+      </div>
+    </section>
+
     <!-- FEATURES -->
     <section>
-      <h2>Zašto retroVPG?</h2>
+      <h2>Zašto RetroVPG?</h2>
       <div class="features">
         <div class="feature">📚 Centralizirana baza</div>
-        <div class="feature">🔍 Jednostavna uporaba</div>
-        <div class="feature">🕹️ Fokus na povezivanje ljudi</div>
         <div class="feature">🚀 Organizirana foto galerija</div>
+        <div class="feature">🔒 Privatnost korisnika</div>
+        <div class="feature">📊 Transparentna zarada</div>
       </div>
     </section>
 
@@ -205,46 +219,48 @@
         <div class="package" onclick="selectPackage('Supporter')">
           <h3>🎮 Supporter</h3>
           <p>1 – 10 €</p>
-          <ul>
-            <li>Donacije</li>
-            <li>Rani updateovi i dodatne opcije</li>
-          </ul>
         </div>
 
         <div class="package" onclick="selectPackage('Backer')">
           <h3>🕹️ Backer</h3>
-          <p>10€</p>
-          <ul>
-            <li>Beta pristup (kasnije premium verzija)</li>
-            <li>Glasanje o značajkama</li>
-          </ul>
+          <p>10 €</p>
         </div>
 
         <div class="package" onclick="selectPackage('Investor')">
           <h3>🚀 Investor</h3>
           <p>25 €+</p>
-          <ul>
-            <li>Premium doživotno</li>
-            <li>Istaknuto ime / logo</li>
-            <li>Udio u prihodima*</li>
-          </ul>
         </div>
       </div>
+    </section>
+
+    <!-- PREVIEW -->
+    <section>
+      <h2>Pregled aplikacije</h2>
+
+      <div class="preview-gallery">
+        <img src="ChatGPT Image Feb 2, 2026, 09_45_16 AM.png" />
+        <img src="123.png" />
+      </div>
+
+      <div class="preview-upload">
+        <input type="file" id="imageUpload" accept="image/*" multiple hidden />
+        <button onclick="document.getElementById('imageUpload').click()">
+          📸 Dodaj slike sučelja
+        </button>
+      </div>
+
+      <div class="preview-gallery" id="previewGallery"></div>
     </section>
 
     <!-- MODAL -->
     <div class="modal" id="modal">
       <div class="modal-content">
         <h3 id="modalTitle"></h3>
-        <p>
-          Hvala na interesu za retroVPG! Kontaktirat ćemo vas s daljnjim
-          informacijama.
-        </p>
         <button onclick="closeModal()">Zatvori</button>
       </div>
     </div>
 
-    <footer>© 2026 retroVPG • Investicijska aplikacija</footer>
+    <footer>© 2026 RetroVPG</footer>
 
     <script>
       function selectPackage(name) {
@@ -256,6 +272,22 @@
       function closeModal() {
         document.getElementById("modal").style.display = "none";
       }
+
+      const uploadInput = document.getElementById("imageUpload");
+      const gallery = document.getElementById("previewGallery");
+
+      uploadInput.addEventListener("change", function () {
+        gallery.innerHTML = "";
+        Array.from(this.files).forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            gallery.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        });
+      });
     </script>
   </body>
 </html>
