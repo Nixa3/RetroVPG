@@ -7,13 +7,13 @@
 
     <style>
       :root {
-        --primary: #38bdf8;
-        --secondary: #0ea5e9;
-        --bg: #020617;
-        --card: #020617;
-        --border: #1e293b;
-        --text: #e5e7eb;
-        --muted: #94a3b8;
+        --primary: #facc15;
+        --secondary: #eab308;
+        --bg: #3e2723;
+        --card: #4e342e;
+        --border: #6d4c41;
+        --text: #ffffff;
+        --muted: #f5e6d3;
       }
 
       * {
@@ -23,11 +23,11 @@
       body {
         margin: 0;
         font-family: "Segoe UI", system-ui, sans-serif;
-        background: radial-gradient(circle at top, #020617, #000);
+        background: linear-gradient(135deg, #3e2723, #5d4037);
         color: var(--text);
       }
 
-      /* ---------- HERO ---------- */
+      /* HERO */
       .hero {
         min-height: 100vh;
         display: flex;
@@ -41,7 +41,7 @@
       .hero h1 {
         font-size: 3.5rem;
         color: var(--primary);
-        text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+        text-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
       }
 
       .hero p {
@@ -73,7 +73,7 @@
         margin-bottom: 50px;
       }
 
-      /* ---------- FEATURES ---------- */
+      /* FEATURES */
       .features {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -81,13 +81,25 @@
       }
 
       .feature {
-        background: rgba(2, 6, 23, 0.7);
+        background: var(--card);
         border: 1px solid var(--border);
         padding: 30px;
         border-radius: 15px;
       }
 
-      /* ---------- INVEST ---------- */
+      /* LOGO */
+      .logo-container {
+        text-align: center;
+      }
+
+      .logo-container img {
+        max-width: 220px;
+        border-radius: 20px;
+        padding: 15px;
+        background: white;
+      }
+
+      /* INVEST */
       .packages {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -95,6 +107,7 @@
       }
 
       .package {
+        background: var(--card);
         border: 1px solid var(--border);
         padding: 35px;
         border-radius: 20px;
@@ -104,17 +117,34 @@
 
       .package:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
+        box-shadow: 0 0 35px rgba(250, 204, 21, 0.35);
       }
 
       .package h3 {
         color: var(--primary);
       }
 
-      /* ---------- APP PREVIEW ---------- */
+      /* PREVIEW GALLERY (SVE U JEDNOM REDU) */
+      .preview-gallery {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+
+      .preview-gallery img {
+        width: 300px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        padding: 8px;
+        background: white;
+      }
+
       .preview-upload {
         text-align: center;
-        margin-bottom: 40px;
+        margin: 40px 0;
       }
 
       .preview-upload button {
@@ -126,25 +156,7 @@
         cursor: pointer;
       }
 
-      .preview-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 25px;
-      }
-
-      .preview-gallery img {
-        width: 100%;
-        border-radius: 20px;
-        border: 1px solid var(--border);
-        padding: 8px;
-        transition: transform 0.3s;
-      }
-
-      .preview-gallery img:hover {
-        transform: scale(1.05);
-      }
-
-      /* ---------- MODAL ---------- */
+      /* MODAL */
       .modal {
         position: fixed;
         inset: 0;
@@ -155,7 +167,7 @@
       }
 
       .modal-content {
-        background: #020617;
+        background: var(--card);
         border: 1px solid var(--border);
         padding: 40px;
         border-radius: 15px;
@@ -180,6 +192,14 @@
         Investiraj
       </button>
     </div>
+
+    <!-- LOGO -->
+    <section>
+      <h2>Logo aplikacije</h2>
+      <div class="logo-container">
+        <img src="Capture.JPG" alt="RetroVPG Logo" />
+      </div>
+    </section>
 
     <!-- FEATURES -->
     <section>
@@ -213,36 +233,22 @@
       </div>
     </section>
 
-    <img
-      src="ChatGPT Image Feb 2, 2026, 09_45_16 AM.png"
-      alt="Sučelje aplikacije"
-    />
-
-    <section id="preview">
+    <!-- PREVIEW -->
+    <section>
       <h2>Pregled aplikacije</h2>
-        <img
-      src="123.png"
-      alt="Pregled galerije"
-    />
 
-   
+      <div class="preview-gallery">
+        <img src="ChatGPT Image Feb 2, 2026, 09_45_16 AM.png" />
+        <img src="123.png" />
+      </div>
+
       <div class="preview-upload">
-        <input
-          type="file"
-          id="imageUpload"
-          accept="image/*"
-          multiple
-          hidden
-        />
+        <input type="file" id="imageUpload" accept="image/*" multiple hidden />
         <button onclick="document.getElementById('imageUpload').click()">
           📸 Dodaj slike sučelja
         </button>
-        <p style="color: var(--muted)">
-          Slike su samo za vizualni pregled aplikacije
-        </p>
       </div>
 
-      <!-- 🔴 OVDJE SE AUTOMATSKI PRIKAZUJU TVOJE SLIKE -->
       <div class="preview-gallery" id="previewGallery"></div>
     </section>
 
@@ -267,13 +273,11 @@
         document.getElementById("modal").style.display = "none";
       }
 
-      /* 🔴 LOGIKA ZA PREVIEW TVOJIH SLIKA */
       const uploadInput = document.getElementById("imageUpload");
       const gallery = document.getElementById("previewGallery");
 
       uploadInput.addEventListener("change", function () {
         gallery.innerHTML = "";
-
         Array.from(this.files).forEach((file) => {
           const reader = new FileReader();
           reader.onload = (e) => {
