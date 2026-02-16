@@ -121,13 +121,20 @@ h2 {
 }
 
 /* ===== GALERIJA SLIKA ===== */
-.preview-gallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap; /* prelazi u novi red ako treba */
+.preview-gallery img {
+  width: 420px;      /* bilo 300px */
+  height: 280px;     /* bilo 200px */
+  object-fit: cover;
+  border-radius: 18px;
+  border: 2px solid var(--border);
+  background: white;
+  transition: transform 0.3s;
 }
+
+.preview-gallery img:hover {
+  transform: scale(1.05);
+}
+
 
 .preview-gallery img {
   width: 300px;
